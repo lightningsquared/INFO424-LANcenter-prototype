@@ -12,9 +12,7 @@ end
 module LANcenter
   class Application < Rails::Application
     config.generators do |g|
-      g.view_specs = false
-      g.controller_specs = false
-      g.helper_specs = false
+      g.test_framework = false
       g.stylesheets = false
       g.javascripts = false
     end
