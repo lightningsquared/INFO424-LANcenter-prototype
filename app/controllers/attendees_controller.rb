@@ -35,7 +35,7 @@ class AttendeesController < ApplicationController
 
     respond_to do |format|
       if @attendee.save
-        format.html { redirect_to event_attendees_url(@event), notice: 'Attendee was successfully checked in.' }
+        format.html { redirect_to @event, notice: 'Attendee was successfully checked in.' }
       else
         format.html { render action: "new" }
       end
@@ -59,7 +59,7 @@ class AttendeesController < ApplicationController
     @attendee.destroy
 
     respond_to do |format|
-      format.html { redirect_to event_attendees_path(@event) }
+      format.html { redirect_to @event }
     end
   end
 

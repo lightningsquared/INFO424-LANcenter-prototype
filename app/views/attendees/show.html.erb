@@ -1,25 +1,10 @@
-<p>
-  <b>First name:</b>
-  <%= @attendee.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @attendee.last_name %>
-</p>
+<div class="page-header">
+  <h1><%= "#{@attendee.first_name} #{@attendee.last_name}" %></h1>
+</div>
 
 <p>
   <b>Email:</b>
   <%= @attendee.email %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <address>
-    <%= @attendee.address.line1 %><br>
-    <%= @attendee.address.line2 %><br>
-    <%= @attendee.address.city %>, <%= @attendee.address.region %> <%= @attendee.address.postal_code %><br>
-  </address>
 </p>
 
 <p>
@@ -43,5 +28,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_attendee_path(@attendee) %> |
-<%= link_to 'Back', attendees_path %>
+<%= link_to 'Edit', edit_event_attendee_path(@event, @attendee) %> |
+<%= link_to 'Back', event_attendees_path %>

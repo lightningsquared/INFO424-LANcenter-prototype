@@ -19,9 +19,9 @@
     <td><%= attendee.date_of_birth %></td>
     <td><%= attendee.attendee_type %></td>
     <td><%= attendee.handle %></td>
-    <td><%= link_to 'Show', [@event, @attendee] %></td>
+    <td><%= link_to 'Show', [@event, attendee] %></td>
     <td><%= link_to 'Edit', edit_event_attendee_path(@event, attendee) %></td>
-    <td><%= link_to 'Destroy', [@event, @attendee], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', [@event, attendee], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
