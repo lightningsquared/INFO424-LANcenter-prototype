@@ -1,6 +1,4 @@
-<h1>Listing attendees</h1>
-
-<table>
+<table class="table">
   <tr>
     <th>First name</th>
     <th>Last name</th>
@@ -8,7 +6,6 @@
     <th>Date of birth</th>
     <th>Attendee type</th>
     <th>Handle</th>
-    <th>Event</th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,14 +19,13 @@
     <td><%= attendee.date_of_birth %></td>
     <td><%= attendee.attendee_type %></td>
     <td><%= attendee.handle %></td>
-    <td><%= attendee.event_id %></td>
-    <td><%= link_to 'Show', event_attendee %></td>
-    <td><%= link_to 'Edit', edit_event_attendee_path(attendee) %></td>
-    <td><%= link_to 'Destroy', attendee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@event, @attendee] %></td>
+    <td><%= link_to 'Edit', edit_event_attendee_path(@event, attendee) %></td>
+    <td><%= link_to 'Destroy', [@event, @attendee], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Check In New Attendee', new_event_attendee_path(@event.id) %>
+<%= link_to 'Check In New Attendee', new_event_attendee_path(@event) %>

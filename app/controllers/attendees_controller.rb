@@ -1,51 +1,49 @@
 class AttendeesController < ApplicationController
+  before_filter :get_event
+
   def index
-    @attendees = Attendee.all
+    @attendees = @event.attendees
 
     respond_to do |format|
       format.html
     end
   end
 
-  # GET /attendees/1
   def show
-    @attendee = Attendee.find(params[:id])
+    @attendee = @event.attendees.find(params[:id])
 
     respond_to do |format|
       format.html
     end
   end
 
-  # GET /attendees/new
   def new
-    @attendee = Attendee.new
+    @event = Event.find(params[:event_id])
+    @attendee = @event.attendees.build
 
     respond_to do |format|
       format.html
     end
   end
 
-  # GET /attendees/1/edit
   def edit
-    @attendee = Attendee.find(params[:id])
+    @attendee = @event.attendees.find(params[:id])
   end
 
-  # POST /attendees
   def create
-    @attendee = Attendee.new(params[:attendee])
+    @attendee = @event.attendees.build(params[:attendee])
 
     respond_to do |format|
       if @attendee.save
-        format.html { redirect_to @attendee, notice: 'Attendee was successfully created.' }
+        format.html { redirect_to event_attendees_url(@event), notice: 'Attendee was successfully checked in.' }
       else
         format.html { render action: "new" }
       end
     end
   end
 
-  # PUT /attendees/1
   def update
-    @attendee = Attendee.find(params[:id])
+    @attendee = @event.attendees.find(params[:id])
 
     respond_to do |format|
       if @attendee.update_attributes(params[:attendee])
@@ -56,13 +54,18 @@ class AttendeesController < ApplicationController
     end
   end
 
-  # DELETE /attendees/1
   def destroy
-    @attendee = Attendee.find(params[:id])
+    @attendee = @event.attendees.find(params[:id])
     @attendee.destroy
 
     respond_to do |format|
-      format.html { redirect_to attendees_url }
+      format.html { redirect_to event_attendees_path(@event) }
     end
+  end
+
+  private
+
+  def get_event
+    @event = Event.find(params[:event_id])
   end
 end

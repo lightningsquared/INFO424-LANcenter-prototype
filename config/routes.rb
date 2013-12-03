@@ -1,4 +1,5 @@
 LANcenter::Application.routes.draw do
-  resources :events
-  resources :attendees
+  resources :events do
+    resources :attendees
+  end
 end
