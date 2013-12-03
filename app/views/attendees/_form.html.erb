@@ -1,0 +1,48 @@
+<%= form_for [@event, @attendee] do |f| %>
+  <% if @attendee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendee.errors.count, "error") %> prohibited this attendee from being saved:</h2>
+
+      <ul>
+      <% @attendee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_of_birth %><br />
+    <%= f.date_select :date_of_birth, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :attendee_type %><br />
+    <%= f.text_field :attendee_type, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :handle %><br />
+    <%= f.text_field :handle, :class => "form-control" %>
+  </div>
+  <%= f.fields_for :address do |address| %>
+    <%= render :partial => 'shared/address', :locals => {:f => address} %>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :event_id %><br />
+    <%= f.number_field :event_id, :class => "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

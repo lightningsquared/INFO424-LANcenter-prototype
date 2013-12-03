@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1><%= "#{@attendee.first_name} #{@attendee.last_name}" %></h1>
+</div>
+
+<p>
+  <b>Email:</b>
+  <%= @attendee.email %>
+</p>
+
+<p>
+  <b>Date of birth:</b>
+  <%= @attendee.date_of_birth %>
+</p>
+
+<p>
+  <b>Attendee type:</b>
+  <%= @attendee.attendee_type %>
+</p>
+
+<p>
+  <b>Handle:</b>
+  <%= @attendee.handle %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%= @attendee.event_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_attendee_path(@event, @attendee) %> |
+<%= link_to 'Back', event_attendees_path %>
