@@ -16,7 +16,16 @@
   </nav>
   <main role="main">
     <div class="container">
-      <%= yield %>
+      <div class="row">
+        <% if flash[:notice] %>
+          <div class="alert alert-success"><%= flash[:notice] %></div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </main>
 </body>

@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+<div class="page-header">
+  <h1><%= @event.name %></h1>
+</div>
 
 <p>
   <b>Description:</b>
@@ -12,19 +9,25 @@
 
 <p>
   <b>Start time:</b>
-  <%= @event.start_time %>
+  <%= @event.start_time.strftime("%m/%d/%Y %I:%M%p") %>
 </p>
 
 <p>
   <b>End time:</b>
-  <%= @event.end_time %>
+  <%= @event.end_time.strftime("%m/%d/%Y %I:%M%p") %>
 </p>
 
 <p>
-  <b>Organization:</b>
-  <%= @event.organization_id %>
+  <b>Address:</b>
+  <address>
+    <%= @event.address.line1 %><br>
+    <% if @event.address.line2.present? %><%= @event.address.line2 %><br><% end %>
+    <%= @event.address.city %>, <%= @event.address.region %> <%= @event.address.postal_code %><br>
+  </address>
 </p>
-
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+<h2>Attendees</h2>
+

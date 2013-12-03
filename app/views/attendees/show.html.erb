@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>First name:</b>
   <%= @attendee.first_name %>
@@ -13,6 +11,15 @@
 <p>
   <b>Email:</b>
   <%= @attendee.email %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <address>
+    <%= @attendee.address.line1 %><br>
+    <%= @attendee.address.line2 %><br>
+    <%= @attendee.address.city %>, <%= @attendee.address.region %> <%= @attendee.address.postal_code %><br>
+  </address>
 </p>
 
 <p>
